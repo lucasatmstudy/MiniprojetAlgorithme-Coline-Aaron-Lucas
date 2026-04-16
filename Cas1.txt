@@ -1,0 +1,48 @@
+Cas 1
+
+//Fonction pour délivrer un médicament grace a une odronnance
+FONCTION delivrer(listeproduit,ordonnance)
+	POUR i de 0 a taille listeproduit -1
+		SI listeproduit[i][0] = ordonnance[0]			//Si le produit est trouvé
+			SI listeproduit[i][1] = 0			//Le stock est vide
+				RETOURNER "Hors stock"
+			SINON SI listeproduit[i][1] < ordonnance[1]	//Le stock est insuffisant
+				RETOURNER "Quantité insuffisante"
+			SINON 
+				listeproduit[i][1] <- listeproduit[i][1] - ordonnance[1] //Le stock est suffisant et gestion du stock
+				RETOURNER "Stock suffisant le produit est délivré"
+			FIN SI
+		FIN SI
+	FIN POUR
+	RETOURNER "Produit non disponible"
+FIN FONCTION
+
+//Algorithme principale
+DEMANDER ordonnance
+ordonnance <- entrée utilisateur
+listeproduit <- entrée par utilisateur
+resultat <- delivrer(listeproduit,ordonnance)
+AFFICHER resultat
+
+//Traçage
+listeproduit <- [[Avamix, 12], [Amoxicilline, 5], [Ozempic, 0], [Paracétamol, 3], [Doliprane, 10], [Spacefond, 15], [Efferalgan, 20]]
+ordonnance <- [Amoxicilline, 1]
+
+Passage 1, i = 0 
+listeproduit[0][0] = Avamix
+ordonnance[0] = Amoxicilline
+Avamix != Amoxicilline
+
+Passage 2, i = 1
+listeproduit[0][1] = Amoxicilline 
+ordonnance[0] = Amoxicilline
+Amoxicilline = Amoxicilline
+Trouvé !
+
+	-> listeproduit[1][1]!=0
+	-> listeproduit[1][1]=5 > ordonnance[1] = 1  
+	-> listeproduit[1][1]=5-ordonnance[1]=4 RETOURNER "Stock suffisant le produit est délivré"
+
+FIN le pharmacien peut aider un patient, hourra !!!
+
+	
