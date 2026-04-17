@@ -1,0 +1,78 @@
+Cas 2 Alerter sur les médicaments périmés 
+
+listeproduit <- [[Avamix, 03/04/2026], [Amoxicilline, 04/07/2026], [Ozempic, 0	05/12/2025], [Paracétamol, 13/05/2026], [Doliprane, 24/07/2027], [Spacefond, 07/04/2026], [Efferalgan, 05/09/2026]]
+perime <- []
+bientotperime <- []
+DEMANDER date
+date <- date ajoute par l'utilisateur
+POUR i de 0 à taille de listeproduit -1
+	SI listeproduit[i][1] < date
+		AFFICHER listeproduit[i][0] + "périmé"
+		AJOUTER listeproduit [i][0] à perime
+	SINON SI listeproduit[i][1] < date+30jours
+		AFFICHER listeproduit[i][0] + "bientot périmé"
+		AJOUTER listeproduit [i][0] à bientotperime
+	FIN SI
+FIN POUR
+
+//Traçage
+Date <- 16/04/2026
+Passage 1
+i = 0
+03/04/2026 < 16/04/2026
+donc AFFICHER Avamix périmé
+ajouter Avamix à perime
+perime <- [Avamix]
+bientotperime <- []
+
+Passage 2
+i = 1
+04/07/2026 > 16/04/2026
+//rien ne se passe
+perime <- [Avamix]
+bientotperime <- []
+
+Passage 3
+i = 2
+05/12/2025 < 16/04/2026
+donc AFFICHER Ozempic périmé
+ajouter Ozempic à perime
+perime <- [Avamix, Ozempic]
+bientotperime <- []
+
+Passage 4
+i = 3
+13/12/2026 > 16/04/2026
+// rien ne se passe
+perime <- [Avamix, Ozempic]
+bientotperime <- []
+
+Passage 5
+i = 4
+13/05/2026 > 16/04/2026
+13/05/2026 < 16/04/2026 + 30 jours
+donc AFFICHER Paracétamol bientot périmé
+ajouter Paracétamol à bientotperime
+perime <- [Avamix, Ozempic]
+bientotperime <- [Paracétamol]
+
+Passage 6
+i = 5
+24/07/2026 > 16/04/2026
+ajouter Avamix à perime
+perime <- [Avamix, Ozempic]
+bientotperime <- [Paracétamol]
+
+Passage 7
+i = 6
+07/04/2026 < 16/04/2026
+donc AFFICHER Spacefond périmé
+ajouter Spacefond à perime
+perime <- [Avamix, Ozempic, Spacefond]
+bientotperime <- [Paracétamol]
+
+Passage 8
+i = 7
+05/09/2026 > 16/04/2026
+perime <- [Avamix, Ozempic, Spacefond]
+bientotperime <- [Paracétamol]
