@@ -1,0 +1,177 @@
+
+FONCTION triParSelection(tableau)
+n ← longueur(tableau)
+
+	POUR i de 0 à n – 2
+		indexMin ← i
+		POUR j de i + 1 à n – 1
+			SI tableau[j][1] < tableau[indexMin][1]
+				indexMin ← j
+			FIN SI
+		FIN POUR
+		SI indexMin != i
+			temp ← tableau[i]
+			tableau[i] ← tableau[indexMin]
+			tableau[indexMin] ← temp
+		FIN SI
+	FIN POUR
+FIN FONCTION
+
+//Algorithme principal
+listeproduit <- [[Avamix, 03/04/2026], [Amoxicilline, 04/07/2026], [Ozempic, 0	05/12/2025], [Paracétamol, 13/05/2026], [Doliprane, 24/07/2027], [Spacefond, 07/04/2026], [Efferalgan, 05/09/2026]]
+triParSelection(listeproduit)
+
+On choisit le tri par selection :
+1. On cherche le plus petit élément du tableau
+2. On le place au début
+3. On cherche le plus petit élément restant
+4. On le place en deuxième position
+5. On répète jusqu'à avoir tout trié
+
+//Traçage
+Passage 1
+i = 0 => indexMin = 0 
+j = i+1 = 1 
+listeproduit[1][1] > listeproduit[0][1] ==> 04/07/2026 > 03/04/2026
+Pas de changement
+indexMin = 0
+
+j = 2
+listeproduit[2][1] < listeproduit[0][1] ==> 05/12/2025 < 03/04/2026
+indexMin = 2
+
+j = 3
+listeproduit[3][1] > listeproduit[2][1] ==> 13/05/2026 > 05/12/2025
+Pas de changement
+indexMin = 2
+
+j = 4
+listeproduit[4][1] > listeproduit[2][1] ==> 24/07/2026 > 05/12/2025
+Pas de changement
+indexMin = 2 
+
+j = 5
+listeproduit[4][1] > listeproduit[2][1] ==> 07/04/2026 > 05/12/2025
+Pas de changement
+indexMin = 2 
+
+j = 6
+listeproduit[4][1] > listeproduit[2][1] ==> 05/04/2026 > 09/12/2025
+Pas de changement
+indexMin = 2 
+
+Echanger listeproduit[0] et listeproduit[2]
+
+
+
+[[Ozempic, 05/12/2025], [Amoxicilline, 04/07/2026], [Avamix, 03/04/2026], [Paracétamol, 13/05/2026], [Doliprane, 24/07/2027], [Spacefond, 07/04/2026], [Efferalgan, 05/09/2026]]
+Passage 2
+i = 1 => indexMin = 1
+
+j = 2
+listeproduit[2][1] < listeproduit[1][1] ==> 03/04/2025 < 04/07/2026
+indexMin = 2
+
+j = 3
+listeproduit[3][1] > listeproduit[2][1] ==> 13/05/2026 > 03/04/2026
+Pas de changement
+indexMin = 2
+
+j = 4
+listeproduit[4][1] > listeproduit[2][1] ==> 24/07/2026 > 03/04/2026
+Pas de changement
+indexMin = 2
+
+j = 5
+listeproduit[5][1] > listeproduit[2][1] ==> 07/04/2026 > 03/04/2026
+Pas de changement
+indexMin = 2
+
+j = 6
+listeproduit[6][1] > listeproduit[2][1] ==> 05/09/2026 > 03/04/2026
+Pas de changement
+indexMin = 2
+
+Echanger listeproduit[1] et listeproduit[2]
+
+
+
+
+
+[[Ozempic, 05/12/2025], [Avamix, 03/04/2026], [Amoxicilline, 04/07/2026], [Paracétamol, 13/05/2026], [Doliprane, 24/07/2027], [Spacefond, 07/04/2026], [Efferalgan, 05/09/2026]]
+Passage 3
+i = 2 => indexMin = 2
+
+j = 3
+listeproduit[3][1] < listeproduit[2][1] ==> 13/05/2026 < 04/07/2026
+indexMin = 3
+
+j = 4
+listeproduit[4][1] > listeproduit[3][1] ==> 24/07/2026 > 13/05/2026
+Pas de changement
+indexMin = 3
+
+j = 5
+listeproduit[5][1] < listeproduit[3][1] ==> 07/04/2026 < 13/05/2026
+indexMin = 5
+
+j = 6
+listeproduit[6][1] > listeproduit[5][1] ==> 05/09/2026 > 07/04/2026
+Pas de changement
+indexMin = 6
+
+Echanger listeproduit[2] et listeproduit[6]
+
+
+[[Ozempic, 05/12/2025], [Avamix, 03/04/2026], [Spacefond, 07/04/2026], [Paracétamol, 13/05/2026], [Doliprane, 24/07/2027], [Amoxicilline, 04/07/2026], [Efferalgan, 05/09/2026]]
+Passage 4
+i = 3 => indexMin = 3
+
+j = 4
+listeproduit[4][1] > listeproduit[3][1] ==> 24/07/2026 > 13/05/2026
+Pas de changement
+indexMin = 3
+
+j = 5
+listeproduit[5][1] > listeproduit[3][1] ==> 04/07/2026 > 13/05/2026
+Pas de changement
+indexMin = 3
+
+j = 6
+listeproduit[6][1] > listeproduit[3][1] ==> 05/09/2026 > 13/05/2026
+Pas de changement
+indexMin = 3
+
+Pas d'échange
+
+
+
+[[Ozempic, 05/12/2025], [Avamix, 03/04/2026], [Spacefond, 07/04/2026], [Paracétamol, 13/05/2026], [Doliprane, 24/07/2027], [Amoxicilline, 04/07/2026], [Efferalgan, 05/09/2026]]
+Passage 5
+i = 4 => indexMin = 4
+
+j = 5
+listeproduit[5][1] < listeproduit[4][1] ==> 04/07/2026 < 24/07/2026
+indexMin = 5
+
+j = 6
+listeproduit[6][1] > listeproduit[4][1] ==> 05/09/2026 > 24/07/2026
+Pas de changement
+indexMin = 5
+
+Echanger listeproduit[4] et listeproduit[5]
+
+
+
+
+[[Ozempic, 05/12/2025], [Avamix, 03/04/2026], [Spacefond, 07/04/2026], [Paracétamol, 13/05/2026], [Amoxicilline, 04/07/2026], [Doliprane, 24/07/2026], [Efferalgan, 05/09/2026]]
+Passage 6
+i = 5 => indexMin = 5
+
+j = 6
+listeproduit[6][1] > listeproduit[5][1] ==> 05/09/2026 > 24/07/2026
+Pas de changement
+indexMin = 5
+
+Pas d'échange
+
