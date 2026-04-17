@@ -24,7 +24,7 @@ ALGORITHME PRINCIPAL
 
 maxEmprunt <- chercherMax(livres)
 commande <- commander(livres,maxEmprunt)
-POUR i de 0 à taille de commande
+POUR i de 0 à taille de commande -1
 	AFFICHER commande[i] //afficher le/les livres à commander
 FIN POUR
 

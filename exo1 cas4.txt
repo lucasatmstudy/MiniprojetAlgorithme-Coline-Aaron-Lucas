@@ -1,0 +1,28 @@
+CAS 4
+
+FONCTION chercherPlace(liste,rendu)
+	POUR i de 0 à taille de liste-1
+		SI  liste[i] <= rendu[0] ET rendu[0] < liste[i+1] //place trouvée
+		 	place<- i+1
+	
+	
+FONCTION ranger(liste,place,n) //n<-taille de liste-1 | place<-index où ranger le livre
+	SI  n-place = 0
+		RETOURNER "livre rangé"
+	SINON
+		temp ← liste[n] 
+		liste[n] ← tableau[n - 1] 
+		liste[n - 1] ← temp 
+		RETOURNER ranger(liste,place,n-1)
+
+
+ALGORITHME PRINCIPAL
+
+livres  <- [[Artaud Antonin, Le Moine, 1],[Hugo Victor, Les Misérables, 7],[J.K Rowling, Harry Potter,4],[Martin Georges R.R, Le Trône de fer, 3],[Pierre Lemaitre, Un avenir Radieux,1],[Stoker Bram, Dracula, 7],[Valérie Perrin, Tata,1]] 
+rendu <- [Jaworski, Gagner ka guerre]
+
+place <- chercherPlace(livres,rendu)
+AJOUTER rendu à livres 
+n<-taille de livres -1
+ranger(livres,place,n)
+
