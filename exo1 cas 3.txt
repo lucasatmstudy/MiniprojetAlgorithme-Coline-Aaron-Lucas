@@ -1,0 +1,113 @@
+CAS 3
+
+FONCTION chercherMax(liste)
+	max <-liste[0][2]
+	POUR i de 1 à taille de liste -1
+		SI liste[i][2]> max
+			max <- liste[i][2]
+		FIN SI
+	FIN POUR
+	RETOURNER max
+FIN FONCTION
+
+FONCTION commander(liste,valeur)
+	commande <- []
+	POUR i de 0 à taille de liste -1
+		SI liste[i][2]==valeur
+			AJOUTER liste[i] à commande
+		FIN SI
+	FIN POUR
+	RETOURNER commande
+FIN FONCTION
+
+ALGORITHME PRINCIPAL
+
+maxEmprunt <- chercherMax(livres)
+commande <- commander(livres,maxEmprunt)
+POUR i de 0 à taille de commande
+	AFFICHER commande[i] //afficher le/les livres à commander
+FIN POUR
+
+
+//Traçage
+
+livres  <- [[Artaud Antonin, Le Moine, 1],[Hugo Victor, Les Misérables, 7],[J.K Rowling, Harry Potter,4],[Martin Georges R.R, Le Trône de fer, 3],[Pierre Lemaitre, Un avenir Radieux,1],[Stoker Bram, Dracula, 7],[Valérie Perrin, Tata,1]] 
+
+//appel de la fonction chercherMax(livres)
+
+maxEmprunt <-liste[0][2]=1
+Passage 1
+i=1
+livres[1][2]=7>1
+maxEmprunt =7
+
+Passage 2
+1=2
+livres[2][2]=4 <7
+pas de changement
+maxEmprunt =7
+
+Passage 3 
+i=3
+livres[3][2]=3<7
+Pas de changement
+maxEmprunt =7
+
+Passage 4
+i=4
+livres[4][2]=1<7
+Pas de changement
+maxEmprunt =7
+
+Passage 5
+i=5
+livres[5][2]=7 n'est pas supérieur à 7
+Pas de changement
+maxEmprunt =7
+
+Passage 6
+i=6
+livres[6][2]=1<7
+pas de changement 
+maxEmprunt = 7
+//fin d'appel
+
+//appel de la fonction commander(livres,maxEmprunt)
+commande <-[]
+
+passage 1
+i=0
+livres[0][2]=1 != maxEmprut
+
+passage 2
+i=1
+livres[1][2]=1 = maxEmprut
+Ajout de livres[1] à commande
+commande = [livres[1]]
+
+passage 3
+i=2
+livres[2][2]=4 != maxEmprut
+
+passage 4
+i=3
+livres[3][2]=3 != maxEmprut
+
+passage 5
+i=4
+livres[4][2]=1 != maxEmprut
+
+passage 6
+i=5
+livres[5][2]=7 = maxEmprut
+Ajout de livres[5] à commande
+commande= [livres[1],livres[5]]
+
+passage 7
+i=6
+livres[5][2]=1 != maxEmprut
+
+//fin d'appel
+
+AFFICHER commande[0] -> [Hugo Victor, Les Misérables, 7]
+AFFICHER commande[1] -> [Stoker Bram, Dracula, 7]
