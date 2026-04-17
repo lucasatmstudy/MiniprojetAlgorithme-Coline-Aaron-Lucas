@@ -1,13 +1,15 @@
 Cas 1
 
 //Fonction pour délivrer un médicament grace a une odronnance
-FONCTION delivrer(listeproduit,ordonnance)
+FONCTION delivrer(listeproduit,ordonnance,tabCommande)
 	POUR i de 0 a taille listeproduit -1
 		SI listeproduit[i][0] = ordonnance[0]			//Si le produit est trouvé
 			SI listeproduit[i][1] = 0			//Le stock est vide
-				RETOURNER "Hors stock"
+				AJOUTER listeproduit[i][0] à tabCommande
+				RETOURNER "Hors stock, commande passéee"
 			SINON SI listeproduit[i][1] < ordonnance[1]	//Le stock est insuffisant
-				RETOURNER "Quantité insuffisante"
+				AJOUTER listeproduit[i][0] à tabCommande
+				RETOURNER "Quantité insuffisante, commande passéee"
 			SINON 
 				listeproduit[i][1] <- listeproduit[i][1] - ordonnance[1] //Le stock est suffisant et gestion du stock
 				RETOURNER "Stock suffisant le produit est délivré"
@@ -19,6 +21,7 @@ FIN FONCTION
 
 //Algorithme principale
 DEMANDER ordonnance
+tabCommande <- []
 ordonnance <- entrée utilisateur
 listeproduit <- entrée par utilisateur
 resultat <- delivrer(listeproduit,ordonnance)
