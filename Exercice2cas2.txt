@@ -1,0 +1,121 @@
+//Fonction de tri
+FONCTION triretard(listeretard)
+	POUR i de 0 à taille listeretard -2
+		indexlivre <- i
+		POUR j de i+1 à taille listeretard -1
+			SI listeretard [i][2] < listeretard[indexlivre][2]
+				indexlivre <- j
+			FIN SI
+		FIN POUR
+		SI indexlivre != i
+			temp ← listeretard[i]
+			listeretard[i] ← listeretard[indexlivre]
+			listeretard[indexlivre] ← temp
+		FIN SI
+	FIN POUR
+FIN FONCTION
+
+//Algorithme principal
+emprunts <-	[
+		[Artaud Antonin, Le Moine, 12/04/2026], 
+		[Bello, Les falsificateurs, 03/03/2026], 
+		[JK Rowling, Harry Potter, 25/05/2026], 
+		[Kentarō Miura, Berserk, 01/06/2026], 
+		[Hugo Victor, Les Misérables, 22/04/2026], 
+		[Martin Georges R.R, Le Trône de fer, 11/04/2026], 
+		[Stoker Bram, Dracula, 23/04/2026]
+		] 
+listeretard <- []
+date <- 16/04/2026
+
+POUR i de 0 à taille de emprunts -1
+	SI emprunts[i][2] < date
+		AJOUTER emprunts[i] à listeretard
+	FIN SI
+FIN POUR
+triretard(listeretard)
+AFFICHER listeretard
+
+//Traçage
+Passage 1
+i = 0 ==> 12/04/2026 < 16/04/2026
+Ajouter emprunts[0] à listeretard
+listeretard <- [[Artaud Antonin, Le Moine, 12/04/2026]]
+
+Passage 2
+i = 1 ==> 03/03/2026 > 16/04/2026
+Ajouter emprunts[1] à listeretard
+listeretard <- 	[
+		[Artaud Antonin, Le Moine, 12/04/2026], 
+		[Bello, Les falsificateurs, 03/03/2026]
+		]
+
+Passage 3
+i = 2 ==> 25/05/2026 > 16/04/2026
+Aucun ajout
+
+Passage 4
+i = 3 ==> 01/06/2026 > 16/04/2026
+Aucun ajout
+
+Passage 5
+i = 4 ==> 22/04/2026 > 16/04/2026
+Aucun ajout
+
+Passage 6
+i = 5 ==> 11/04/2026 < 16/04/2026
+Ajouter emprents[5] à listeretard
+listeretard <- 	[
+		[Artaud Antonin, Le Moine, 12/04/2026], 
+		[Bello, Les falsificateurs, 03/03/2026], 
+		[Martin Georges R.R, Le Trône de fer, 11/04/2026]
+		]
+
+Passage 7
+i = 6 ==> 26/04/2026 > 16/04/2026
+Aucun ajout
+
+---> fin de la boucle POUR, 
+---> début de la fonction de tri
+
+listeretard <- 	[
+		[Artaud Antonin, Le Moine, 12/04/2026], 
+		[Bello, Les falsificateurs, 03/03/2026], 
+		[Martin Georges R.R, Le Trône de fer, 11/04/2026]
+		]
+
+Passage 1
+i = 0 
+indexlivre = 0
+j = 0+1 = 1
+listeretard[1][2] < listertard[0][2] ==> 03/03/2026 < 12/04/2026
+modification
+indexlivre = 1
+
+j = 0+2 = 2
+listeretard[2][2] > listertard[1][2] ==> 11/04/2026 > 03/03/2026
+pas de modification
+indexlivre = 1
+
+
+listeretard <- 	[
+		[Bello, Les falsificateurs, 03/03/2026],
+		[Artaud Antonin, Le Moine, 12/04/2026], 
+		[Martin Georges R.R, Le Trône de fer, 11/04/2026]
+		]
+Passage 2
+i = 1 
+indexlivre = 1
+
+j = 1+1 = 2
+listeretard[2][2] < listertard[1][2] ==> 11/04/2026 < 12/04/2026
+modification
+indexlivre = 2
+
+listeretard <- 	[
+		[Bello, Les falsificateurs, 03/03/2026],
+		[Martin Georges R.R, Le Trône de fer, 11/04/2026], 
+		[Artaud Antonin, Le Moine, 12/04/2026]
+		]
+
+AFFICHER la listeretard
