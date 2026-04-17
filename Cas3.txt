@@ -1,0 +1,97 @@
+Cas 3
+
+FONCTION verifStock(tableau)
+	POUR i de 0 à taille tableau -1
+		SI tableau[i][1] > 0
+			RETOURNER i
+		FIN SI
+	FIN POUR
+	RETOURNER -1
+FIN FONCTION
+
+
+ALGORITHME PRINCIPAL
+
+enStock <- verifStock(tableau)
+
+SI enStock = -1
+	AFFICHER "Aucun produit en stock"
+SINON
+	min <- tableau[enStock][2] 
+	POUR i de 0 à taille tableau -1
+		SI tableau[i][1] > 0
+			SI tableau[i][2] < min 
+				min <- tableau[i][2]
+				position <- i
+			FIN SI
+		FIN SI
+	FIN POUR
+	AFFICHER "Le médicament en stock le moins cher est " + tableau[position][0] + "au prix de " + min + "€"
+FIN SI
+
+//Traçage
+
+tableau <- [[Avamix,0,5.5], [Amoxicilline,1,5], [Ozempic,0,6.8], [Paracétamol,9,4.8], [Doliprane,15,7], [Spacefond,0,3.4], [Efferalgan,6,6.1]]
+
+enStock <- appel de verifStock(tableau)
+//Fonction verifStock(tableau)
+
+Passage 1
+i=0
+tableau[0][1] =0
+
+Passage 2
+i=1
+tableau[1][1]=5
+RETOURNER 1
+
+
+//fin fonction
+
+enStock <- 1
+enStock != -1
+
+min <-tableau[1][2]=5
+
+Passage 1
+i=0
+tableau[0][1]=0
+//produit pas en stock
+
+Passage 2
+i=1
+tableau[1][1]>0 
+tableau[1][2]=5 
+//pas de changement de min
+
+Passage 3
+i=2
+tableau[2][1]>0 
+tableau[2][2]=6.8 > min (=5)
+//pas de changement de min
+
+Passage 4
+i=3
+tableau[3][1]>0 
+tableau[3][2]=4.8 < min (=5)
+min <- 4.8
+position <- 3
+
+Passage 5
+i=4
+tableau[4][1]>0 
+tableau[4][2]=7 > min (=4.8)
+//pas de changement de min
+
+Passage 6
+i=5
+tableau[5][1]=0 
+//produit pas en stock
+
+Passage 7
+i=6
+tableau[6][1]>0 
+tableau[6][2]=6.1 > min (=4.8)
+//pas de changement de min
+
+AFFICHER "Le médicament en stock le moins cher est Paracétamol au prix de 4.8 €
